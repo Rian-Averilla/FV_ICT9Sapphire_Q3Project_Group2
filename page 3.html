@@ -9,10 +9,11 @@
 
     <style>
         body {
-            background-color:#0e0b66;
-            background-image: url(https://i.pinimg.com/736x/74/a0/bc/74a0bcfbd9c8bb9f30bfb74f7869bd0b.jpg);
+            background-color: #0e0b66;
+            background-image: url(https://i.pinimg.com/avif/1200x/11/da/ea/11daeaf14dd272badb7c08b317d5e076.avf);
             background-size: cover;
             background-repeat: no-repeat;
+            min-height: 100vh;
         }
 
         .navbar {
@@ -22,13 +23,20 @@
             padding: 10px 20px;
             margin: 15px;
             box-shadow: 0 0 15px rgba(51, 100, 138, 0.15);
-      }
-      
-      
+        }
 
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: none;
+        }
 
+        .station-btn {
+            margin: 2px;
+            font-size: 0.8rem;
+        }
     </style>
-
 </head>
 
 <body>
@@ -55,19 +63,28 @@
         </div>
     </nav>
 
+
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-6 card p-4 shadow">
-                <h3 class="text-center mb-4">Fare Calculator</h3>
+            <div class="col-md-8 card p-4 shadow">
+                <h3 class="text-center mb-4">LRT-2 Fare Calculator</h3>
                 
-                <div class="mb-3">
-                    <label class="form-label">Pickup Point (KM Marker):</label>
-                    <input type="text" id="pickup" class="form-control" placeholder="e.g., 0">
-                </div>
+                <div class="row">
+                    <div class="col-12 mb-4 text-center">
+                        <h6>Quick Select Station:</h6>
+                        <div id="stationButtons">
+                            </div>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Drop-off Point (KM Marker):</label>
-                    <input type="text" id="dropoff" class="form-control" placeholder="e.g., 10">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Pickup Point (KM Marker):</label>
+                        <input type="text" id="pickup" class="form-control" placeholder="e.g., 0">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Drop-off Point (KM Marker):</label>
+                        <input type="text" id="dropoff" class="form-control" placeholder="e.g., 10">
+                    </div>
                 </div>
 
                 <div class="mb-3 form-check">
@@ -82,29 +99,52 @@
                 </div>
             </div>
         </div>
+    </div>
 
     <script>
+        const stations = [
+            "Santolan", "Katipunan", "Anonas", "Araneta Center Cubao", 
+            "Betty Go-Belmonte", "Gilmore", "J. Ruiz", "V. Mapa", 
+            "Pureza", "Legarda", "Recto"
+        ];
+
+        const btnContainer = document.getElementById("stationButtons");
+        stations.forEach((name, index) => {
+            let btn = document.createElement("button");
+            btn.className = "btn btn-outline-secondary btn-sm station-btn";
+            btn.innerText = name;
+            btn.onclick = () => {
+                if (document.getElementById("pickup").value === "") {
+                    document.getElementById("pickup").value = index;
+                } else {
+                    document.getElementById("dropoff").value = index;
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
 
         function calculateFare() {
-        let pickup, dropoff, basefare, baseKM, perKMrate, distance, extraKM, discount;
-                pickup = parseFloat(document.getElementById("pickup").value);
-                dropoff = parseFloat(document.getElementById("dropoff").value);
-                basefare = 50;
-                perKMrate = 15; 
-                baseKM = 2;
-                discount = document.getElementById("disc").checked;
+            let pickup, dropoff, basefare, baseKM, perKMrate, distance, extraKM, discount;
+            pickup = parseFloat(document.getElementById("pickup").value);
+            dropoff = parseFloat(document.getElementById("dropoff").value);
+            basefare = 50;
+            perKMrate = 15; 
+            baseKM = 2;
+            discount = document.getElementById("disc").checked;
 
-                distance = Math.max(Math.abs(dropoff - pickup), 0);
+            distance = Math.max(Math.abs(dropoff - pickup), 0);
             extraKM = Math.max(distance - baseKM, 0); 
 
-    let fare = basefare + extraKM + perKMrate;
+            let fare = basefare + extraKM + perKMrate;
 
             fare = fare * (1 - 0.2 * discount);
 
             document.getElementById("DisplayAns").innerHTML = "Php" + fare.toFixed(2);
         }
-    
     </script>
 
+    <footer>
+        <p style="color: white;">&copy; Adriana Averilla, Zyrene Nieto, Raina Isidro | 9-Sapphire</p>
+    </footer>
 </body>
 </html>
