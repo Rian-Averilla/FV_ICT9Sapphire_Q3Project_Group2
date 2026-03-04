@@ -10,11 +10,14 @@
 
     <style>
         body {
-            background-color:darkblue;
+            background-color:#0e0b66;
             background-size: cover;
             background-repeat: no-repeat;
         }
 
+        .container {
+            text-align: center;
+        }
     
     </style>
 
@@ -22,40 +25,23 @@
 
 <body>
 
-<h1>LRT Line 2 (Santolan to Recto)</h1> <img src="https://appassets.mvtdev.com/map/41/l/1022/237346/2.webp" alt="LRT line 2 schedule">
-
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-
             <a class="navbar-brand" href="#">Sakay Na!</a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page2.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page3.html">Fare Matrix</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page4.html">Schedule</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page5.html">Sign Up</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="page 2.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page 3.html">Fare Matrix</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page 4.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page 5.html">Sign Up</a></li>
                 </ul>
-
                 <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="" type="button">Search</button>
+                    <button class="btn btn-outline-light" type="button">Search</button>
                 </form>
             </div>
         </div>
@@ -64,35 +50,22 @@
     <br><br>
 
     <div class="container">
-        <p class="">Home Page</p>
+        <h1 style="color: white;">Santolan to Recto</h1>
         <br>
-        <blockquote>
-            <span class="">Lorem Ipsum</span>
-        </blockquote>
     </div>
 
-    <script>
+    <div class="container">
+    <h3 style="color: white; text-align: center;">LRT Line 2</h3> <img src="https://appassets.mvtdev.com/map/41/l/1022/237346/2.webp" alt="LRT line 2 schedule">
+    </div>
 
-        function calculateFare() {
-        Let pickup, dropoff, basefare, baseKM, perKMrate, distance, extraKM, discount;
-                pickup = parseFloat(document.getElementById("pickup").value);
-                dropoff = parseFloat(document.getElementById("dropoff").value);
-                basefare = 50;
-                perKMrate = 15; 
-                baseKM = 2;
-                discount = document.getElementById("disc").checked;
+    <br><br>
 
-                distance = Math.max(Math.abs(dropoff - pickup), 0);
-            extraKM = Math.max(distance - baseKM, 0); 
-
-    Let fare = basefare + extraKM + perKMrate;
-
-            fare = fare * (1 - 0.2 * discount);
-
-            document.getElementById("DisplayAns").innerHTML = "Php" + fare.toFixed(2);
-        }
-
-    </script>
+    <div class="container">
+        <h5 style="color: white;">LRT runs from 05:00 to 22:00. On weekends, service ends at 21:00 - 21:30.
+            <br><br>
+    Santolan-Katipunan-Anonas-Araneta Center Cubao-Betty Go-Belmonte-Gilmore-J. Ruiz-V. Mapa-Pureza-Legarda-Recto</h5>
+    </div>
 
 </body>
+</html>
 </html>
