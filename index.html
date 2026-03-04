@@ -19,57 +19,61 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-
             <a class="navbar-brand" href="#">Sakay Na!</a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page2.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page3.html">Fare Matrix</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page4.html">Schedule</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="page5.html">Sign Up</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="page2.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page3.html">Fare Matrix</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page4.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="page5.html">Sign Up</a></li>
                 </ul>
-
                 <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="" type="button">Search</button>
+                    <button class="btn btn-outline-light" type="button">Search</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <br><br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 card p-4 shadow">
+                <h3 class="text-center mb-4">Fare Calculator</h3>
+                
+                <div class="mb-3">
+                    <label class="form-label">Pickup Point (KM Marker):</label>
+                    <input type="number" id="pickup" class="form-control" placeholder="e.g., 0">
+                </div>
 
-    <div class="container">
-        <p class="">Home Page</p>
-        <br>
-        <blockquote>
-            <span class="">Lorem Ipsum</span>
-        </blockquote>
-    </div>
+                <div class="mb-3">
+                    <label class="form-label">Drop-off Point (KM Marker):</label>
+                    <input type="number" id="dropoff" class="form-control" placeholder="e.g., 10">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="disc">
+                    <label class="form-check-label" for="disc">20% Discount (Student/Senior/PWD)</label>
+                </div>
+
+                <button onclick="calculateFare()" class="btn btn-primary w-100">Calculate Fare</button>
+
+                <div class="mt-4 text-center">
+                    <h4>Total Fare: <span id="DisplayAns" class="text-success">Php 0.00</span></h4>
+                </div>
+            </div>
+        </div>
+
 
     <script>
 
         function calculateFare() {
-        Let pickup, dropoff, basefare, baseKM, perKMrate, distance, extraKM, discount;
+        let pickup, dropoff, basefare, baseKM, perKMrate, distance, extraKM, discount;
                 pickup = parseFloat(document.getElementById("pickup").value);
                 dropoff = parseFloat(document.getElementById("dropoff").value);
                 basefare = 50;
@@ -80,14 +84,14 @@
                 distance = Math.max(Math.abs(dropoff - pickup), 0);
             extraKM = Math.max(distance - baseKM, 0); 
 
-    Let fare = basefare + extraKM + perKMrate;
+    let fare = basefare + extraKM + perKMrate;
 
             fare = fare * (1 - 0.2 * discount);
 
             document.getElementById("DisplayAns").innerHTML = "Php" + fare.toFixed(2);
         }
-
+    
     </script>
 </body>
-
 </html>
+
